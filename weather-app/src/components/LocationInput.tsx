@@ -1,18 +1,22 @@
-import { Box, Button, Input, Text } from "@chakra-ui/react"
+import { Box, Button, Input, InputGroup, Text } from "@chakra-ui/react"
 import { useRef, useState } from "react"
+import { LuSearch } from "react-icons/lu"
 
 interface Props{
-  onClickGenerate:(city:string)=>void
+  onSearch:(city:string)=>void
 }
 
-function LocationInput({onClickGenerate}:Props) {
+function LocationInput({onSearch}:Props) {
   const city=useRef<HTMLInputElement>(null)
   const [err,setErr]=useState('')
   return (
+    
     <Box m={5} display={'grid'} placeItems={'center'}>
-        <Input onChange={()=>setErr('')} ref={city} type="text" id="city" placeholder="enter a city"/>
+      <InputGroup startElement={<LuSearch/>}>
+        <Input rounded={15} onChange={()=>setErr('')} ref={city} type="text" id="city" placeholder="Enter a city name"/>
+      </InputGroup>
         <Text color={'red'} fontSize={'sm'}>{err}</Text>
-        <Button my={3} rounded={15} onClick={() => (onClickGenerate(city.current?.value || ""),(city.current?.value=="" && setErr('Please enter a city.')))}>Generate</Button>
+        <Button onClick={()=>((city.current?.value=="" && setErr("Enter a city"),onSearch(city.current?.value || "")))}>Search</Button>
     </Box>
 
   )

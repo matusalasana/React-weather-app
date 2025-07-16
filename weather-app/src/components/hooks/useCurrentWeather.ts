@@ -8,6 +8,7 @@ interface WeatherResponse{
       };
   current: {
     temp_c: number;
+    feelslike_c:number;
     condition: {
       text: string;
       icon: string;
@@ -17,7 +18,7 @@ interface WeatherResponse{
   };
 }
 
-function useWeatherData(city:string){
+function useCurrentWeather(city:string){
 
     return useQuery<WeatherResponse>({
         queryKey: ['Addis Ababa',city],
@@ -37,4 +38,4 @@ function useWeatherData(city:string){
     })
 }
 
-export default useWeatherData
+export default useCurrentWeather

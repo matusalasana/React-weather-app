@@ -8,7 +8,7 @@ function WeatherCard() {
 
   return (
     <div>
-        <LocationInput onClickGenerate={(city)=>setCity(city)} />
+        <LocationInput onSearch={(city)=>setCity(city)} />
         <WeatherData city={city}/>
     </div>
   )
