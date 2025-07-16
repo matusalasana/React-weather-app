@@ -9,7 +9,12 @@ function WeatherData({city}:Props) {
     const {data,isLoading,error}=useCurrentWeather(city)
 
     if (isLoading) return <Spinner/>
-    if (error?.message=='Request failed with status code 400') return <Text color={'red'}>There no country or a city with that name. Please try to include a country. (eg. Nairobi, Kenya) </Text>
+    if (error?.message=='Request failed with status code 400') 
+      return <Text 
+                color={'red'}
+              >
+                There no country or a city with that name, try to search a different way. (eg. zip code, long. lat. ... etc) 
+              </Text>
 
   return (
 

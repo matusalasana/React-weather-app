@@ -15,8 +15,8 @@ function LocationInput({onSearch}:Props) {
       <InputGroup startElement={<LuSearch/>}>
         <Input rounded={15} onChange={()=>setErr('')} ref={city} type="text" id="city" placeholder="Enter a city name"/>
       </InputGroup>
-        <Text color={'red'} fontSize={'sm'}>{err}</Text>
-        <Button onClick={()=>((city.current?.value=="" && setErr("Enter a city"),onSearch(city.current?.value || "")))}>Search</Button>
+        <Text m={2} color={'red'} fontSize={'sm'}>{err}</Text>
+        <Button mt={3} rounded={10} onClick={()=>((city.current?.value=="" && setErr("Input field required!"),onSearch(city.current?.value || "")))}>Search</Button>
     </Box>
 
   )

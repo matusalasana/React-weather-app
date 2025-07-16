@@ -21,7 +21,7 @@ interface WeatherResponse{
 function useCurrentWeather(city:string){
 
     return useQuery<WeatherResponse>({
-        queryKey: ['Addis Ababa',city],
+        queryKey: ['current',city],
         queryFn: () =>
             axios
                 .get('http://api.weatherapi.com/v1/current.json', {
