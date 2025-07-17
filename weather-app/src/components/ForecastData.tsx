@@ -1,5 +1,6 @@
 import { Box,Image, Text } from "@chakra-ui/react";
 import useForecastWeather from "./hooks/useForecastWeather";
+import ForecastSkeleton from "./ForecastSkeleton";
 
 interface Props{
     forecastCity:string;
@@ -12,7 +13,7 @@ function ForecastData({forecastCity}:Props) {
     return days[new Date(dateString).getDay()];
   };
 
-  if (isLoading) return <Text>Loading...</Text>;
+  if (isLoading) return  <ForecastSkeleton/>
   if (error) return <Text>Error loading forecast</Text>;
 
   return (
