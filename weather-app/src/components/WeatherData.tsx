@@ -36,13 +36,13 @@ function WeatherData({city}:Props) {
           alignItems={'center'} 
         >
           <Image 
-            width={"120px"} 
+            width={"100px"} 
             src={data?.current.condition.icon} 
             alt={data?.current.condition.text}
           />
           <Text 
             color={'white'} 
-            fontSize={'5xl'} 
+            fontSize={'4xl'} 
             fontWeight={'bold'}
           >
             {data && data?.current.temp_c+"°C" }
@@ -58,13 +58,14 @@ function WeatherData({city}:Props) {
             color={'white'} 
             fontWeight={'600'} 
             fontFamily={'sans-serif'} 
-            fontSize={'4xl'}
+            fontSize={'3xl'}
           >
             {data?.location.name}
           </Text>
           <Text 
             color={'white'}  
-            fontSize={'2xl'}
+            fontSize={'xl'}
+            textAlign={'center'}
           >
             {data?.current.condition.text}
           </Text>

@@ -16,118 +16,93 @@ function ForecastData({forecastCity}:Props) {
   if (error) return <Text>Error loading forecast</Text>;
 
   return (
-    <Box bgColor={'yellow.500'} display={'flex'} overflowY={'hidden'} scrollbar={'hidden'} overflowX={'scroll'} height={'370px'} columns={2}>
-            {data?.forecast.forecastday.slice(0,7).map(day=>
-    <Box placeItems={'center'}>
-      <Text textAlign={'center'}>{getDayName(day.date)}</Text>
+    <Box bgColor={'yello'} display={'flex'} overflowY={'hidden'} scrollbar={'hidden'} overflowX={'scroll'} height={'180px'} columns={2}>
+      {data?.forecast.forecastday.slice(0,7).map(day=>
         <Box 
-                width={'200px'} 
-                bgColor={data ?'blue.400' : 'normal'} 
-                height={'180px'} 
-                mt={5} 
-                rounded={10} 
-              >
-                <HStack 
-                  justifyContent={'center'} 
-                  alignItems={'center'} 
-                >
-                  <Image 
-                    width={"80px"} 
-                    src={data?.current.condition.icon} 
-                    alt={data?.current.condition.text}
-                  />
-                  <Text 
-                    color={'white'} 
-                    fontSize={'3xl'} 
-                    fontWeight={'bold'}
-                  >
-                    {data && data?.current.temp_c+"°C" }
-                  </Text>
-                </HStack>
+          width={'200px'} 
+          bgColor={data ?'blue.400' : 'normal'} 
+          height={'100%'} 
+          mx={3} 
+          rounded={10} 
+        >
+
+          <Box 
+            display={'flex'}
+            justifyContent={'center'} 
+            alignItems={'center'} 
+          >
+            <Image
+              width={"50px"} 
+              src={day.day.condition.icon} 
+              alt={day.day.condition.text}
+            />
+            <Text 
+              color={'white'} 
+              fontSize={'2xl'} 
+              fontWeight={'bold'}
+            >
+              {getDayName(day.date)}
+            </Text>
+          </Box>
         
-                <HStack 
-                  display={'flex'} 
-                  flexDirection={'column'} 
-                  justifyContent={'center'}
-                >
-                  <Text 
-                    color={'white'} 
-                    fontWeight={'400'} 
-                    fontFamily={'sans-serif'} 
-                    fontSize={'2xl'}
-                  >
-                    {data?.location.name}
-                  </Text>
-                  <Text 
-                    color={'white'}  
-                    fontSize={'md'}
-                  >
-                    {data?.current.condition.text}
-                  </Text>
-                </HStack>
-              </Box>
-                
-              <Box 
-                display={'flex'} 
-                justifyContent={'space-evenly'} 
-                width={'180px'} 
-                mx={5} 
-                rounded={10}
+          <Box 
+            display={'flex'} 
+            flexDirection={'column'} 
+            width={'180px'} 
+            rounded={10}
+          > 
+            <Box
+              display={'flex'}
+              justifyContent={'space-evenly'}
+              mt={3}
+            >
+              <Box
+                display={'flex'}
+                flexDirection={'column'}
+                alignItems={'center'}
+                justifyContent={'center'}
               >
-                <HStack 
-                  display={'flex'} 
-                  flexDirection={'column'} 
-                  alignItems={'center'}
+                <Text
+                  fontSize={'md'}
+                  color={'white'}
                 >
-                  <Text 
-                    fontSize={'sm'}
-                  >
-                    {data && "Max. Temp."}
-                  </Text>
-                  <Text 
-                    fontSize={'md'} 
-                    fontWeight={'bold'}
-                  >
-                    {data && data?.current.humidity+"%"}
-                  </Text>
-                </HStack>
-                <HStack 
-                  display={'flex'} 
-                  flexDirection={'column'} 
-                  alignItems={'center'}
+                  max_temp
+                </Text>
+                <Text
+                  fontSize={'md'}
+                  fontWeight={'bold'}
+                  color={'white'}
                 >
-                  <Text 
-                    fontSize={'md'}
-                  >
-                    {data && "Wind"}
-                  </Text>
-                  <Text 
-                    fontSize={'md'} 
-                    fontWeight={'bold'}
-                  >
-                    {data && data?.current.wind_kph+"km/h"}
-                  </Text>
-                  </HStack>
-                  <HStack
-                    display={'flex'} 
-                    flexDirection={'column'} 
-                    alignItems={'center'}
-                  >
-                  <Text 
-                    fontSize={'md'}
-                  >
-                    {data && "Feels like"}
-                  </Text>
-                  <Text 
-                    fontSize={'md'} 
-                    fontWeight={'bold'}
-                  >
-                    {data && data?.current.feelslike_c+"°C"}
-                  </Text>
-                </HStack>
+                  {day.day.maxtemp_c+"°C"}
+                </Text>
               </Box>
+              <Box
+                display={'flex'}
+                flexDirection={'column'}
+                alignItems={'center'}
+                justifyContent={'center'}
+              >
+                <Text
+                  fontSize={'md'}
+                  color={'white'}
+                >
+                  min_temp
+                </Text>
+                <Text
+                  color={'white'}
+                  fontSize={'md'}
+                  fontWeight={'bold'}
+                >
+                  {day.day.mintemp_c+"°C"}
+                </Text>
               </Box>
-    )}
+            </Box>
+            <Text m={5} color={'white'} textAlign={'center'}>{day.day.condition.text}</Text>
+          </Box>
+
+        </Box>
+                
+      )}
 
     </Box>
   );
