@@ -1,4 +1,4 @@
-import { Box, Badge, Button, Card, HStack, Image, Text, SimpleGrid } from "@chakra-ui/react";
+import { Box,Image, Text } from "@chakra-ui/react";
 import useForecastWeather from "./hooks/useForecastWeather";
 
 interface Props{
