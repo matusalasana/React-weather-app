@@ -12,7 +12,7 @@ function ForecastData({forecastCity}:Props) {
   if (error) return <Text>Error loading forecast</Text>;
 
   return (
-    <SimpleGrid placeItems={'center'} bgColor={'yellow.400'} overflow={'scroll'} height={'300px'} columns={2}>
+    <Box display={'flex'} overflowY={'hidden'} scrollbar={'hidden'} overflowX={'scroll'} height={'370px'} columns={2}>
             {data?.forecast.forecastday.slice(0,7).map(day=>
     <Box placeItems={'center'}>
         <Box 
@@ -125,7 +125,7 @@ function ForecastData({forecastCity}:Props) {
               </Box>
     )}
 
-    </SimpleGrid>
+    </Box>
   );
 }
 
