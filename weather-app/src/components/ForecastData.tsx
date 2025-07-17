@@ -14,10 +14,16 @@ function ForecastData({forecastCity}:Props) {
   };
 
   if (isLoading) return  <ForecastSkeleton/>
-  if (error) return <Text>Error loading forecast</Text>;
+  if (error) return null
 
   return (
-    <Box bgColor={'yello'} display={'flex'} overflowY={'hidden'} scrollbar={'hidden'} overflowX={'scroll'} height={'180px'} columns={2}>
+    <Box 
+      display={'flex'} 
+      overflowY={'hidden'} 
+      scrollbar={'hidden'} 
+      overflowX={'scroll'} 
+      height={'180px'}
+    >
       {data?.forecast.forecastday.slice(0,7).map(day=>
         <Box 
           width={'200px'} 

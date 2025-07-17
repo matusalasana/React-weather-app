@@ -5,8 +5,8 @@ function ForecastSkeleton() {
   return (
     <Box display={'flex'} overflow={'hidden'}>
         {skeletons.map(skeleton=>
-            <Box m={3} key={skeleton} height={'180px'}>
-                <Skeleton rounded={10} width={'200px'} height={'100%'} bgColor={'gray.300'} />
+            <Box key={skeleton} height={'180px'}>
+                <Skeleton mx={3} rounded={10} width={'200px'} height={'100%'} bgColor={'gray.300'} />
             </Box>
         )}
     </Box>
