@@ -38,8 +38,9 @@ function ForecastData({forecastCity}:Props) {
             />
             <Text 
               color={'white'} 
-              fontSize={'2xl'} 
+              fontSize={'xl'} 
               fontWeight={'bold'}
+              ml={1}
             >
               {getDayName(day.date)}
             </Text>
@@ -66,7 +67,7 @@ function ForecastData({forecastCity}:Props) {
                   fontSize={'md'}
                   color={'white'}
                 >
-                  max_temp
+                  max-temp
                 </Text>
                 <Text
                   fontSize={'md'}
@@ -86,7 +87,7 @@ function ForecastData({forecastCity}:Props) {
                   fontSize={'md'}
                   color={'white'}
                 >
-                  min_temp
+                  min-temp
                 </Text>
                 <Text
                   color={'white'}

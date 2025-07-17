@@ -1,5 +1,6 @@
-import { Box, HStack, Image, Spinner, Text } from "@chakra-ui/react";
+import { Box, HStack, Image, Text } from "@chakra-ui/react";
 import useCurrentWeather from "./hooks/useCurrentWeather";
+import CurrentSkeleton from "./CurrentSkeleton";
 
 interface Props{
   city:string;
@@ -8,7 +9,7 @@ interface Props{
 function WeatherData({city}:Props) {
     const {data,isLoading,error}=useCurrentWeather(city)
 
-    if (isLoading) return <Spinner/>
+    if (isLoading) return <CurrentSkeleton/>
     if (error?.message=='Request failed with status code 400') 
       return <Text 
                 color={'red'}
