@@ -38,7 +38,7 @@ function useForecastWeather(city:string){
         queryKey: ['forecast',city],
         queryFn: () =>
             axios
-                .get('http://api.weatherapi.com/v1/forecast.json', {
+                .get('https://api.weatherapi.com/v1/forecast.json', {
                     params: {
                         q: city,
                         key: "b1d14534d3a34518a8c120723251607",
