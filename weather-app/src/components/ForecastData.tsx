@@ -7,18 +7,23 @@ interface Props{
 
 function ForecastData({forecastCity}:Props) {
   const { data, isLoading, error } = useForecastWeather(forecastCity);
+  const getDayName = (dateString: string) => {
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return days[new Date(dateString).getDay()];
+  };
 
   if (isLoading) return <Text>Loading...</Text>;
   if (error) return <Text>Error loading forecast</Text>;
 
   return (
-    <Box display={'flex'} overflowY={'hidden'} scrollbar={'hidden'} overflowX={'scroll'} height={'370px'} columns={2}>
+    <Box bgColor={'yellow.500'} display={'flex'} overflowY={'hidden'} scrollbar={'hidden'} overflowX={'scroll'} height={'370px'} columns={2}>
             {data?.forecast.forecastday.slice(0,7).map(day=>
     <Box placeItems={'center'}>
+      <Text textAlign={'center'}>{getDayName(day.date)}</Text>
         <Box 
-                width={'350px'} 
+                width={'200px'} 
                 bgColor={data ?'blue.400' : 'normal'} 
-                height={'230px'} 
+                height={'180px'} 
                 mt={5} 
                 rounded={10} 
               >
@@ -27,13 +32,13 @@ function ForecastData({forecastCity}:Props) {
                   alignItems={'center'} 
                 >
                   <Image 
-                    width={"120px"} 
+                    width={"80px"} 
                     src={data?.current.condition.icon} 
                     alt={data?.current.condition.text}
                   />
                   <Text 
                     color={'white'} 
-                    fontSize={'5xl'} 
+                    fontSize={'3xl'} 
                     fontWeight={'bold'}
                   >
                     {data && data?.current.temp_c+"°C" }
@@ -47,15 +52,15 @@ function ForecastData({forecastCity}:Props) {
                 >
                   <Text 
                     color={'white'} 
-                    fontWeight={'600'} 
+                    fontWeight={'400'} 
                     fontFamily={'sans-serif'} 
-                    fontSize={'4xl'}
+                    fontSize={'2xl'}
                   >
                     {data?.location.name}
                   </Text>
                   <Text 
                     color={'white'}  
-                    fontSize={'2xl'}
+                    fontSize={'md'}
                   >
                     {data?.current.condition.text}
                   </Text>
@@ -65,9 +70,8 @@ function ForecastData({forecastCity}:Props) {
               <Box 
                 display={'flex'} 
                 justifyContent={'space-evenly'} 
-                width={'350px'} 
-                height={'100px'} 
-                m={5} 
+                width={'180px'} 
+                mx={5} 
                 rounded={10}
               >
                 <HStack 
@@ -76,9 +80,9 @@ function ForecastData({forecastCity}:Props) {
                   alignItems={'center'}
                 >
                   <Text 
-                    fontSize={'md'}
+                    fontSize={'sm'}
                   >
-                    {data && "Humidity"}
+                    {data && "Max. Temp."}
                   </Text>
                   <Text 
                     fontSize={'md'} 
